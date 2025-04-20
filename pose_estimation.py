@@ -6,8 +6,8 @@ mpDraw = mp.solutions.drawing_utils
 mpPose = mp.solutions.pose
 pose = mpPose.Pose()
 
-# cam = cv2.VideoCapture(r"C:\Users\Asus\Documents\HAND_TRACKING\videos.mp4\1.mp4")
-cam = cv2.VideoCapture(0)  # Use 0 for webcam
+cam = cv2.VideoCapture(r"C:\Users\Asus\Documents\HAND_TRACKING\videos.mp4\9.mp4")
+# cam = cv2.VideoCapture(0)  # Use 0 for webcam
 pTime = 0
 
 new_width = 1080  # Adjust as needed
