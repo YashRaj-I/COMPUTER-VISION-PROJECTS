@@ -40,13 +40,13 @@ while True:
         break  # Exit if video ends or can't read frame
     
     img = detector.findHands(img)  # Find hands in the image
-    lmList = detector.findPosition(img, draw=False)  # Get landmark positions
-    if len(lmList) != 0:
+    lmList, _ = detector.findPosition(img, draw=False)  # Get landmark positions
+    if len(lmList)!=0:  # Check if landmarks are detected
         # Example: Print the coordinates of the index finger tip
         # print(lmList[4], lmList[8])  # Index finger tip landmark is at index 8
         
         x1, y1 = lmList[4][1], lmList[4][2]  # Coordinates of the index finger tip
-        x2, y2 = lmList[8][1], lmList[8][2]
+        x2, y2 = lmList[8][1], lmList[8][2]  # Coordinates of the thumb tip
         cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
 
 
@@ -69,7 +69,7 @@ while True:
         # Set volume to 50%
         volume.SetMasterVolumeLevelScalar(vol, None)
 
-
+        
         if length < 50:
             cv2.circle(img, (cx, cy), 15, (0, 0, 255), cv2.FILLED)
     cv2.rectangle(img, (50, 150), (85, 400), (0, 255, 0), 3)  # Draw a rectangle for volume bar

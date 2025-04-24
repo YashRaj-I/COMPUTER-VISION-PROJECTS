@@ -2,7 +2,7 @@ import cv2
 import time
 import mediapipe as mp
 import pose_Module as pm
-cam = cv2.VideoCapture(r"C:\Users\Asus\Documents\HAND_TRACKING\videos.mp4\2.mp4")
+cam = cv2.VideoCapture(r"C:\Users\Asus\Documents\COMPUTER VISION\videos.mp4\2.mp4")
 detector = pm.PoseDetector()
 pTime = 0
 
