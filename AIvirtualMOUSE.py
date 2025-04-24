@@ -10,6 +10,10 @@ smothening = 10  # Smoothening value for mouse movement
 plocX, plocY = 0, 0  # Previous location of the mouse
 clocX, clocY = 0, 0  # Current location of the mouse
 
+clickCooldown = 0.8  # seconds
+lastClickTime = 0
+
+
 cam = cv2.VideoCapture(0)
 cam.set(3, Wcam)
 cam.set(4, Hcam)
@@ -58,11 +62,16 @@ while True:
             length, img, lineInfo = detector.findDistance(8, 12, img)
             print(length)
             # 9. Click mouse if distance is short
-            if length < 40:
+            # if length < 40:
+            #     cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
+            #     autopy.mouse.click()
+            #     cv2.rectangle(img, (frameR, frameR), (Wcam - frameR, Hcam - frameR), (255, 0, 255), 2)
+
+            import time  # already there
+            if length < 40 and (time.time() - lastClickTime) > clickCooldown:
+                lastClickTime = time.time()
                 cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
                 autopy.mouse.click()
-                cv2.rectangle(img, (frameR, frameR), (Wcam - frameR, Hcam - frameR), (255, 0, 255), 2)
-
 
 
 
